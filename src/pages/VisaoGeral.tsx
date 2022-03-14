@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 
 export function VisaoGeral() {
   const [data, setData] = useState([]);
+  const [amountOpen, setAmountOpen] = useState(Number);
+  const [amountTotal, setAmountTotal] = useState(Number);
 
   useEffect(() => {
     const dbRef = ref(db, 'chamados');
@@ -17,6 +19,7 @@ export function VisaoGeral() {
     onValue(Query, (snapshot) => {
       let allContent = [];
       let listOfTickets = [] as any;
+      let counter = 0;
 
       snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
@@ -24,15 +27,21 @@ export function VisaoGeral() {
         allContent.key = childKey;
 
         listOfTickets.push(allContent)
+
+        if (allContent.status === true) {
+          counter++
+        }
       })
+      setAmountTotal(listOfTickets.length)
       setData(listOfTickets)
+      setAmountOpen(counter)
     })
 
   }, [])
 
   return (
     <div className="aplication">
-      <Header amountTotal={0} amountOpen={0} />
+      <Header amountTotal={amountTotal} amountOpen={amountOpen} />
       <Body object={data} />
     </div>
   )
