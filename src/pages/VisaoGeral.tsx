@@ -6,7 +6,7 @@ import './VisaoGeral.css'
 export function VisaoGeral() {
   return (
     <div className="aplication">
-      <Header />
+      <Header amountTotal={0} amountOpen={0} />
       <Body />
     </div>
   )
