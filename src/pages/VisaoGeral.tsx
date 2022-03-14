@@ -1,5 +1,12 @@
+import { Header } from "../components/Header";
+
+import './VisaoGeral.css'
+
 export function VisaoGeral() {
   return (
-    <div><h1>VisaoGeral</h1></div>
+    <div className="aplication">
+      <Header />
+
+    </div>
   )
 }
