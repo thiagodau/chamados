@@ -7,7 +7,7 @@ type HeaderProps = {
 
 export function Header(props: HeaderProps) {
   return (
-    <div style={{ backgroundColor: 'red', width: '100%;', display: 'grid', gridTemplateColumns: 'auto', justifyContent: 'center', justifyItems: 'center' }}>
+    <div style={{ backgroundColor: 'red', display: 'grid', gridTemplateColumns: 'auto', justifyContent: 'center', justifyItems: 'center' }}>
       <h1>Sistema de Gestão de Chamados</h1>
       <div style={{ backgroundColor: 'blue', display: 'flex', flexWrap: 'wrap' }}>
         <HeaderButtons text='Quantidade Total de Chamados' amount={props.amountTotal} />
