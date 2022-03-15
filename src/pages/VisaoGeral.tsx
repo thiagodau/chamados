@@ -5,6 +5,9 @@ import { database } from '../services/firebase'
 import { ref, query, orderByChild, onValue, child, limitToLast, limitToFirst, startAfter, startAt } from "@firebase/database";
 
 import './VisaoGeral.css'
+
+import { FaGithub } from 'react-icons/fa';
+
 import { useEffect, useState } from "react";
 
 export function VisaoGeral() {
@@ -43,6 +46,9 @@ export function VisaoGeral() {
     <div>
       <Header amountTotal={amountTotal} amountOpen={amountOpen} />
       <Body object={data} />
+      <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', fontSize: 'x-small', color: '#ccc' }}>
+        <FaGithub color={'#ccc'} /> &nbsp; Desenvolvido por &nbsp; <a href="https://github.com/thiagodau/chamados" target="_blank" style={{ color: '#ccc' }}>Thiago Rodrigues</a>
+      </div>
     </div>
   )
 }
