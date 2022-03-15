@@ -1,7 +1,7 @@
 import { Header } from "../components/Header";
 import { Body } from "../components/Body";
 
-import { db } from '../services/firebase'
+import { database } from '../services/firebase'
 import { ref, query, orderByChild, onValue, child } from "@firebase/database";
 
 import './VisaoGeral.css'
@@ -13,7 +13,7 @@ export function VisaoGeral() {
   const [amountTotal, setAmountTotal] = useState(Number);
 
   useEffect(() => {
-    const dbRef = ref(db, 'chamados');
+    const dbRef = ref(database, 'chamados');
     const Query = query(dbRef, orderByChild('dataCriacao'))
 
     onValue(Query, (snapshot) => {

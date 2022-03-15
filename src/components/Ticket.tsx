@@ -1,9 +1,11 @@
+import { TicketButtons } from './TicketButtons'
+
 type TicketProps = {
   id: string,
   nome: string,
   descricao: string,
   dataCriacao: string,
-  status: string
+  status: boolean
 }
 
 export function Ticket(props: TicketProps) {
@@ -14,11 +16,14 @@ export function Ticket(props: TicketProps) {
       <p>{props.nome}</p>
       <p>{props.descricao}</p>
       <p>{props.dataCriacao}</p>
-      <div>
-        <button onClick={() => { alert(props.id) }}>excluir</button>
-        <button onClick={() => { alert(props.id) }}>reabrir</button>
-        <button onClick={() => { alert(props.id) }}>concluir</button>
-      </div>
+
+      <TicketButtons
+        id={props.id}
+        nome={props.nome}
+        descricao={props.descricao}
+        dataCriacao={props.dataCriacao}
+        status={props.status}
+      />
     </div>
   )
 }
