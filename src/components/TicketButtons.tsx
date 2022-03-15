@@ -8,10 +8,11 @@ import './TicketButtons.css'
 
 type TicketButtonsProps = {
   id: string,
-  nome: string,
-  descricao: string,
-  dataCriacao: string,
-  status: boolean
+  name: string,
+  description: string,
+  creationDate: string,
+  status: boolean,
+  sector: string
 }
 
 export function TicketButtons(props: TicketButtonsProps) {
@@ -19,7 +20,7 @@ export function TicketButtons(props: TicketButtonsProps) {
   function deletedTicket(key: string) {
     let result = confirm('Tem certeza que deseja excluir o chamado de ' + key)
     if (result == true) {
-      set(ref(database, 'chamados/' + key), null)
+      set(ref(database, 'tickets/' + key), null)
         .then(() => {
           // Data saved successfully!
           console.log('Excluido!')
@@ -32,25 +33,27 @@ export function TicketButtons(props: TicketButtonsProps) {
   }
 
   /** Closed Ticket */
-  function closedTicket(key: string, nome: string, descricao: string, dataCriacao: string, status: boolean) {
+  function closedTicket(key: string, name: string, description: string, creationDate: string, status: boolean, sector: string) {
     if (status === true) {
-      set(ref(database, 'chamados/' + key), {
-        nome: nome,
-        descricao: descricao,
-        dataCriacao: dataCriacao,
-        status: false
+      set(ref(database, 'tickets/' + key), {
+        name: name,
+        description: description,
+        creationDate: creationDate,
+        status: false,
+        sector: sector
       })
     }
   }
 
   /** Reopen Ticket */
-  function reopenTicket(key: string, nome: string, descricao: string, dataCriacao: string, status: boolean) {
+  function reopenTicket(key: string, name: string, description: string, creationDate: string, status: boolean, sector: string) {
     if (status === false) {
-      set(ref(database, 'chamados/' + key), {
-        nome: nome,
-        descricao: descricao,
-        dataCriacao: dataCriacao,
-        status: true
+      set(ref(database, 'tickets/' + key), {
+        name: name,
+        description: description,
+        creationDate: creationDate,
+        status: true,
+        sector: sector
       })
     }
   }
@@ -60,9 +63,9 @@ export function TicketButtons(props: TicketButtonsProps) {
       <button onClick={() => { deletedTicket(props.id) }}><FaBan color={'#EA4147'} /></button>
       {
         props.status ?
-          <button onClick={() => { closedTicket(props.id, props.nome, props.descricao, props.dataCriacao, props.status) }}><FaDoorOpen color={'#ED9B09'} /></button>
+          <button onClick={() => { closedTicket(props.id, props.name, props.description, props.creationDate, props.status, props.sector) }}><FaDoorOpen color={'#ED9B09'} /></button>
           :
-          <button onClick={() => { reopenTicket(props.id, props.nome, props.descricao, props.dataCriacao, props.status) }}><FaDoorClosed color={'#56B35A'} /></button>
+          <button onClick={() => { reopenTicket(props.id, props.name, props.description, props.creationDate, props.status, props.sector) }}><FaDoorClosed color={'#56B35A'} /></button>
       }
     </div>
   )

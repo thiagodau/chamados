@@ -13,8 +13,8 @@ export function VisaoGeral() {
   const [amountTotal, setAmountTotal] = useState(Number);
 
   useEffect(() => {
-    const dbRef = ref(database, 'chamados');
-    const Query = query(dbRef, orderByChild('dataCriacao'))
+    const dbRef = ref(database, 'tickets');
+    const Query = query(dbRef, orderByChild('creationDate'))
 
     onValue(Query, (snapshot) => {
       let allContent = [];

@@ -13,10 +13,12 @@ export function Body(props: BodyProps) {
             <div key={key}>
               <Ticket
                 id={item.key}
-                nome={item.nome}
-                descricao={item.descricao}
-                dataCriacao={item.dataCriacao}
-                status={item.status} />
+                name={item.name}
+                description={item.description}
+                creationDate={item.creationDate}
+                status={item.status}
+                sector={item.sector}
+              />
             </div>
           )
         })

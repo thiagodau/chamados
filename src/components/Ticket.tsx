@@ -4,14 +4,15 @@ import './Ticket.css'
 
 type TicketProps = {
   id: string,
-  nome: string,
-  descricao: string,
-  dataCriacao: string,
-  status: boolean
+  name: string,
+  description: string,
+  creationDate: string,
+  status: boolean,
+  sector: string
 }
 
 export function Ticket(props: TicketProps) {
-  let date = new Date(props.dataCriacao);
+  let date = new Date(props.creationDate);
   let dateFormatted = date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
   return (
@@ -19,15 +20,17 @@ export function Ticket(props: TicketProps) {
       <div className="ticket">
         {props.status ? <span style={{ color: 'orange' }}>ABERTO</span> : <span style={{ color: 'green' }}>CONCLUÍDO</span>}
         <p>{dateFormatted}</p>
-        <p><strong>{props.nome}</strong></p>
-        <p>{props.descricao}</p>
+        <p>{props.sector}</p>
+        <p><strong>{props.name}</strong></p>
+        <p>{props.description}</p>
       </div>
       <TicketButtons
         id={props.id}
-        nome={props.nome}
-        descricao={props.descricao}
-        dataCriacao={props.dataCriacao}
+        name={props.name}
+        description={props.description}
+        creationDate={props.creationDate}
         status={props.status}
+        sector={props.sector}
       />
     </div>
   )
