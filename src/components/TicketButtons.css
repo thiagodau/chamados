@@ -1,0 +1,21 @@
+.ticketsbuttons {
+  display: flex;
+  justify-content: center;
+}
+
+.ticketsbuttons button {
+  display: flex;
+  align-items: center;
+  color: #fff !important;
+  margin: 0 5px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid transparent;
+}
+
+.ticketsbuttons button:hover {
+  border: 1px solid #ccc;
+  cursor: pointer;
+}

@@ -1,0 +1,20 @@
+.ticket {
+  background-color: #ffffff;
+  color: #1b3a57;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #1b3a57;
+  margin: 10px;
+  padding: 10px;
+  width: 250px;
+  min-height: 250px;
+  text-align: center;
+}
+
+.ticket span {
+  color: #fff;
+  font-weight: bolder;
+}
+
+.ticket p {
+  margin: 10px;
+}

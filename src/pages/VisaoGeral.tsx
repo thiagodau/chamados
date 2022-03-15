@@ -40,7 +40,7 @@ export function VisaoGeral() {
   }, [])
 
   return (
-    <div className="aplication">
+    <div>
       <Header amountTotal={amountTotal} amountOpen={amountOpen} />
       <Body object={data} />
     </div>

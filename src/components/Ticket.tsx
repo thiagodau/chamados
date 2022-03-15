@@ -1,5 +1,7 @@
 import { TicketButtons } from './TicketButtons'
 
+import './Ticket.css'
+
 type TicketProps = {
   id: string,
   nome: string,
@@ -9,14 +11,17 @@ type TicketProps = {
 }
 
 export function Ticket(props: TicketProps) {
-  return (
-    <div style={{ backgroundColor: 'yellow', margin: '2px', width: '250px', height: '250px', textAlign: 'center' }}>
-      <p>{props.status ? 'ABERTO' : 'CONCLUIDO'}</p>
-      <p>{props.id}</p>
-      <p>{props.nome}</p>
-      <p>{props.descricao}</p>
-      <p>{props.dataCriacao}</p>
+  let date = new Date(props.dataCriacao);
+  let dateFormatted = date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
+  return (
+    <div>
+      <div className="ticket">
+        {props.status ? <span style={{ color: 'orange' }}>ABERTO</span> : <span style={{ color: 'green' }}>CONCLUÍDO</span>}
+        <p>{dateFormatted}</p>
+        <p><strong>{props.nome}</strong></p>
+        <p>{props.descricao}</p>
+      </div>
       <TicketButtons
         id={props.id}
         nome={props.nome}

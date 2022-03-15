@@ -1,5 +1,10 @@
-import { getDatabase, set, ref } from "firebase/database";
+import { set, ref } from 'firebase/database';
 import { database } from '../services/firebase'
+
+import { FaBan, FaDoorClosed, FaDoorOpen } from 'react-icons/fa';
+
+
+import './TicketButtons.css'
 
 type TicketButtonsProps = {
   id: string,
@@ -12,7 +17,7 @@ type TicketButtonsProps = {
 export function TicketButtons(props: TicketButtonsProps) {
   /** Delete Ticket */
   function deletedTicket(key: string) {
-    let result = confirm('Tem certeza que deseja excluir o chamado de id: ' + key)
+    let result = confirm('Tem certeza que deseja excluir o chamado de ' + key)
     if (result == true) {
       set(ref(database, 'chamados/' + key), null)
         .then(() => {
@@ -28,7 +33,6 @@ export function TicketButtons(props: TicketButtonsProps) {
 
   /** Closed Ticket */
   function closedTicket(key: string, nome: string, descricao: string, dataCriacao: string, status: boolean) {
-    console.log(status)
     if (status === true) {
       set(ref(database, 'chamados/' + key), {
         nome: nome,
@@ -41,7 +45,6 @@ export function TicketButtons(props: TicketButtonsProps) {
 
   /** Reopen Ticket */
   function reopenTicket(key: string, nome: string, descricao: string, dataCriacao: string, status: boolean) {
-    console.log(status)
     if (status === false) {
       set(ref(database, 'chamados/' + key), {
         nome: nome,
@@ -53,13 +56,13 @@ export function TicketButtons(props: TicketButtonsProps) {
   }
 
   return (
-    <div>
-      <button onClick={() => { deletedTicket(props.id) }}>excluir</button>
+    <div className="ticketsbuttons">
+      <button onClick={() => { deletedTicket(props.id) }}><FaBan color={'#EA4147'} /></button>
       {
         props.status ?
-          <button onClick={() => { closedTicket(props.id, props.nome, props.descricao, props.dataCriacao, props.status) }}>concluir</button>
+          <button onClick={() => { closedTicket(props.id, props.nome, props.descricao, props.dataCriacao, props.status) }}><FaDoorOpen color={'#ED9B09'} /></button>
           :
-          <button onClick={() => { reopenTicket(props.id, props.nome, props.descricao, props.dataCriacao, props.status) }}>reabrir</button>
+          <button onClick={() => { reopenTicket(props.id, props.nome, props.descricao, props.dataCriacao, props.status) }}><FaDoorClosed color={'#56B35A'} /></button>
       }
     </div>
   )

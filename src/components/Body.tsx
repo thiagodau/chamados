@@ -6,7 +6,7 @@ type BodyProps = {
 
 export function Body(props: BodyProps) {
   return (
-    <div style={{ backgroundColor: 'green', maxWidth: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <div style={{ margin: '10px', padding: '30px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {
         props.object.map((item: any, key: any) => {
           return (
