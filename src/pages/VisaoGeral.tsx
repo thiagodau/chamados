@@ -2,7 +2,7 @@ import { Header } from "../components/Header";
 import { Body } from "../components/Body";
 
 import { database } from '../services/firebase'
-import { ref, query, orderByChild, onValue, child } from "@firebase/database";
+import { ref, query, orderByChild, onValue, child, limitToLast, limitToFirst, startAfter, startAt } from "@firebase/database";
 
 import './VisaoGeral.css'
 import { useEffect, useState } from "react";

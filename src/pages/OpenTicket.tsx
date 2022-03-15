@@ -5,7 +5,6 @@ import { ref, push } from "firebase/database";
 import { database } from '../services/firebase'
 
 import './OpenTicket.css'
-import { useEffect } from "react";
 
 export function OpenTicket() {
   const options = [

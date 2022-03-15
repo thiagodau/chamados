@@ -18,7 +18,7 @@ type TicketButtonsProps = {
 export function TicketButtons(props: TicketButtonsProps) {
   /** Delete Ticket */
   function deletedTicket(key: string) {
-    let result = confirm('Tem certeza que deseja excluir o chamado de ' + key)
+    let result = confirm('Tem certeza que deseja excluir esse chamado?')
     if (result == true) {
       set(ref(database, 'tickets/' + key), null)
         .then(() => {
@@ -35,26 +35,32 @@ export function TicketButtons(props: TicketButtonsProps) {
   /** Closed Ticket */
   function closedTicket(key: string, name: string, description: string, creationDate: string, status: boolean, sector: string) {
     if (status === true) {
-      set(ref(database, 'tickets/' + key), {
-        name: name,
-        description: description,
-        creationDate: creationDate,
-        status: false,
-        sector: sector
-      })
+      let result = confirm('Tem certeza que quer concluir esse chamado ?')
+      if (result == true) {
+        set(ref(database, 'tickets/' + key), {
+          name: name,
+          description: description,
+          creationDate: creationDate,
+          status: false,
+          sector: sector
+        })
+      }
     }
   }
 
   /** Reopen Ticket */
   function reopenTicket(key: string, name: string, description: string, creationDate: string, status: boolean, sector: string) {
     if (status === false) {
-      set(ref(database, 'tickets/' + key), {
-        name: name,
-        description: description,
-        creationDate: creationDate,
-        status: true,
-        sector: sector
-      })
+      let result = confirm('Tem certeza que quer reabrir esse chamado ?')
+      if (result == true) {
+        set(ref(database, 'tickets/' + key), {
+          name: name,
+          description: description,
+          creationDate: creationDate,
+          status: true,
+          sector: sector
+        })
+      }
     }
   }
 
