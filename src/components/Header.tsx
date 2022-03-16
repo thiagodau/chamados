@@ -3,6 +3,8 @@ import { HeaderButtons } from './HeaderButtons'
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
+import './Header.css'
+
 type HeaderProps = {
   amountTotal: number,
   amountOpen: number,
@@ -19,9 +21,9 @@ export function Header(props: HeaderProps) {
   }, [state])
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'auto', justifyContent: 'center', justifyItems: 'center', textAlign: 'center', color: '#fff' }}>
+    <div className='header'>
       <h1>Sistema de Gestão de Chamados</h1>
-      <div style={{ color: '#fff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div className='header-content'>
         <HeaderButtons text='Total de Chamados' amount={props.amountTotal} />
         <HeaderButtons text='Chamados em Aberto' amount={props.amountOpen} />
         <div style={{
@@ -36,13 +38,11 @@ export function Header(props: HeaderProps) {
         </div>
       </div>
 
-      <div style={{ color: '#fff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <p>Ordenar:</p>
-        <div>
-          <input checked={state === 'status'} type="radio" value="status" name="gender" onChange={(e) => { setState(e.target.value) }} /> Status
-          <input checked={state === 'creationDate'} type="radio" value="creationDate" name="gender" onChange={(e) => { setState(e.target.value) }} /> Data de Criação
-          <input checked={state === 'sector'} type="radio" value="sector" name="gender" onChange={(e) => { setState(e.target.value) }} /> Setor
-        </div>
+      <div className='header-content'>
+        <p>Ordenar por:</p>
+        <input checked={state === 'status'} type="radio" value="status" name="gender" onChange={(e) => { setState(e.target.value) }} /> Status
+        <input checked={state === 'creationDate'} type="radio" value="creationDate" name="gender" onChange={(e) => { setState(e.target.value) }} /> Data de Criação
+        <input checked={state === 'sector'} type="radio" value="sector" name="gender" onChange={(e) => { setState(e.target.value) }} /> Setor
       </div>
     </div>
   )

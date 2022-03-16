@@ -46,3 +46,12 @@
 .form a:hover {
   color: #c11549;
 }
+
+#loading {
+  visibility: hidden;
+  justify-content: center;
+}
+
+#loading img {
+  width: 100px;
+}

@@ -1,0 +1,21 @@
+.header {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content input {
+  cursor: pointer;
+  margin-right: 5px;
+  margin-left: 15px;
+}

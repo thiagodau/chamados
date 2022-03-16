@@ -2,10 +2,11 @@ import { Header } from "../components/Header";
 import { Body } from "../components/Body";
 
 import { database } from '../services/firebase'
-import { ref, query, orderByChild, equalTo, onValue, child, limitToLast, limitToFirst, startAfter, startAt } from "@firebase/database";
+import { ref, query, orderByChild, onValue } from "@firebase/database";
 
 import './VisaoGeral.css'
 
+import imageLoading from '../assets/loop.gif'
 import { FaGithub } from 'react-icons/fa';
 
 import { useEffect, useState } from "react";
@@ -48,8 +49,8 @@ export function VisaoGeral() {
       <Header amountTotal={amountTotal} amountOpen={amountOpen} querySelected={setNewQuery} query={newQuery} />
       {
         data.length == 0 ?
-          <div style={{ display: 'flex', textAlign: 'center', color: '#fff', margin: '20px' }}>
-            <h2>Não exite chamados no banco de dados. Crie um novo clicando no botão Abrir Chamado.</h2>
+          <div style={{ display: 'flex', justifyContent: 'center', margin: '20px' }}>
+            <img src={imageLoading} alt="Processando" />
           </div>
           :
           <Body object={data} />
