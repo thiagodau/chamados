@@ -7,6 +7,8 @@ import {
 import { VisaoGeral } from './pages/VisaoGeral'
 import { OpenTicket } from './pages/OpenTicket'
 import { AddAuthor } from './pages/AddAuthor'
+import { Dashboard } from './pages/Dashboard'
+import { Login } from './pages/Login'
 
 export function AppRoutes() {
   return (
@@ -15,6 +17,8 @@ export function AppRoutes() {
         <Route path='/' element={<VisaoGeral />} />
         <Route path='/abrirchamado' element={<OpenTicket />} />
         <Route path='/adicionartecnico' element={<AddAuthor />} />
+        <Route path='/paineldecontrole' element={<Dashboard />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </Router>
   )

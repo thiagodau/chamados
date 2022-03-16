@@ -10,6 +10,7 @@ import imageLoading from '../assets/loop.gif'
 import { FaGithub } from 'react-icons/fa';
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export function VisaoGeral() {
   const [data, setData] = useState([]);
@@ -57,6 +58,7 @@ export function VisaoGeral() {
       }
       <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', fontSize: 'x-small', color: '#ccc' }}>
         <FaGithub color={'#ccc'} /> &nbsp; Desenvolvido por &nbsp; <a href="https://github.com/thiagodau/chamados" target="_blank" style={{ color: '#ccc' }}>Thiago Rodrigues</a>
+        &nbsp;|&nbsp; <Link to={'/login'} style={{ color: '#ccc' }}>Login</Link>
       </div>
     </div>
   )

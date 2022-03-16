@@ -1,0 +1,24 @@
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  color: #fff;
+  margin: 10px;
+}
+
+.dashboard-menu {
+  width: 100%;
+  display: flex;
+  border: 1px solid aliceblue;
+  padding: 20px;
+  margin: 20px;
+}
+
+.dashboard-body {
+  width: 100%;
+  display: flex;
+  border: 1px solid aliceblue;
+  padding: 20px;
+  margin: 20px;
+
+  justify-content: center;
+}
