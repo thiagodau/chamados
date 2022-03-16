@@ -1,7 +1,7 @@
 import { Ticket } from "./Ticket"
 
 type BodyProps = {
-  object: Object
+  object: Object[]
 }
 
 export function Body(props: BodyProps) {
