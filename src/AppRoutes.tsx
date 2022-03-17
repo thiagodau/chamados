@@ -17,7 +17,7 @@ export function AppRoutes() {
         <Route path='/' element={<VisaoGeral />} />
         <Route path='/abrirchamado' element={<OpenTicket />} />
         <Route path='/adicionartecnico' element={<AddAuthor />} />
-        <Route path='/paineldecontrole' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/login' element={<Login />} />
       </Routes>
     </Router>
