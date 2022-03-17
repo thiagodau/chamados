@@ -42,23 +42,27 @@ export function Login() {
     }
 
     if (result == true) {
+      document.getElementById('message')!.style.visibility = "hidden"
       document.getElementById('imageLoading')!.style.visibility = 'visible';
       localStorage.setItem('@user', usuario)
       window.location.replace('/dashboard')
     } else {
-      alert('Usuário ou senha incorretos, tente novamente.')
+      document.getElementById('message')!.style.visibility = "visible"
+      document.getElementById('form')!.style.animation = "treme 0.1s"
+      document.getElementById('form')!.style.animationIterationCount = "2"
+      document.getElementById('form')!.style.animationDuration = "200ms"
     }
-
   }
 
   return (
     <div className="login">
-      <div className="login-form">
+      <div id="form" className="login-form">
         <h1><FaUserCircle /></h1>
         <input placeholder="Usuário" type="text" onChange={(e) => { setUsuario(e.target.value) }} />
         <input placeholder="Senha" type="password" onChange={(e) => { setPassword(e.target.value) }} />
 
         <button onClick={() => { login(usuario, password) }}>LOGIN</button>
+        <p id="message">Usuário ou senha incorretos.</p>
         <img id="imageLoading" src={imageLoading} width="70px" alt="Loading..." />
         <div>
           <Link to={'/'} style={{ color: '#ccc', fontSize: 'small', textDecoration: 'none' }}>Voltar</Link>
