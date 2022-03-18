@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { database } from "../services/firebase";
 import { ref, query, onValue } from "firebase/database";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 import { FaUserCircle } from 'react-icons/fa'
 import imageLoading from '../assets/loop.gif';
@@ -15,6 +16,9 @@ export function Login() {
   const [userData, setUserData] = useState([]) as any;
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const dbRef = ref(database, 'authors');
@@ -31,10 +35,15 @@ export function Login() {
       setUserData(listOfAuthors)
     })
 
-  }, [])
+    if (shouldRedirect) {
+      navigate('/dashboard');
+    }
+
+  }, [shouldRedirect])
 
   function login(usuario: string, password: string) {
     let result = false;
+
     for (let i = 0; i < userData.length; i++) {
       if (usuario == userData[i].name && password == userData[i].password) {
         result = true;
@@ -44,8 +53,8 @@ export function Login() {
     if (result == true) {
       document.getElementById('message')!.style.visibility = "hidden"
       document.getElementById('imageLoading')!.style.visibility = 'visible';
-      localStorage.setItem('@user', usuario)
-      window.location.replace('/dashboard')
+      localStorage.setItem('@user', usuario);
+      setShouldRedirect(true)
     } else {
       document.getElementById('message')!.style.visibility = "visible"
       document.getElementById('form')!.style.animation = "treme 0.1s"
