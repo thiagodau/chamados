@@ -1,0 +1,26 @@
+.reports {
+  display: block;
+  width: 100%;
+}
+
+.reports-header {
+  text-align: center;
+}
+
+.reports-list {
+  display: block;
+  width: 100%;
+}
+
+.group-list {
+  border: 1px solid aliceblue;
+  margin: 5px;
+  padding: 5px;
+}
+
+.group-list ul,
+.group-list li {
+  display: flex;
+  width: 100%;
+  height: auto;
+}

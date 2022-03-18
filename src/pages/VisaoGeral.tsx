@@ -62,7 +62,9 @@ export function VisaoGeral() {
 
         {
           localStorage.getItem('@user')?.length as any > 1 ?
-            localStorage.getItem('@user') + ' esta logado.'
+            <Link to={'/dashboard'} style={{ color: '#ccc' }}>Oi {localStorage.getItem('@user')}, acesse o Dashboard aqui.
+            </Link>
+
             :
             <Link to={'/login'} style={{ color: '#ccc' }}>Login</Link>
         }

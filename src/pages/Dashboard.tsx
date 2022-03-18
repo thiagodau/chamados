@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { AddAuthor } from '../components/AddAuthor'
+import { Reports } from '../components/Reports'
 
 import './Dashboard.css'
 
@@ -22,14 +24,21 @@ export function Dashboard() {
       <h2>Olá, {userLogado}.</h2>
       <button onClick={() => { localStorage.removeItem('@user'), setUserLogado('') }}>Sair.</button>
       <div className='dashboard-menu'>
-        <button>Relatórios</button> |
+        <Link to={'/'} >Visão Geral</Link> |
         <button onClick={() => { setRenderPage('addAuthor') }}>Adicionar Técnico</button> |
+        <button onClick={() => { setRenderPage('reports') }}>Relatórios</button> |
       </div>
 
       <div className='dashboard-body'>
         {
           renderPage == 'addAuthor' ?
             <AddAuthor />
+            :
+            ''
+        }
+        {
+          renderPage == 'reports' ?
+            <Reports />
             :
             ''
         }
