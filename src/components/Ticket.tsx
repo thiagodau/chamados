@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { TicketButtons } from './TicketButtons'
 
 import './Ticket.css'
@@ -15,6 +16,17 @@ export function Ticket(props: TicketProps) {
   let date = new Date(props.creationDate);
   let dateFormatted = date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
+  const [userLogado, setUserLogado] = useState(false);
+
+  useEffect(() => {
+    let userExists = localStorage.getItem('@user')?.length;
+    if (userExists as number > 1) {
+      setUserLogado(true)
+    } else {
+      setUserLogado(false)
+    }
+  }, [userLogado])
+
   return (
     <div>
       <div className="ticket">
@@ -24,14 +36,22 @@ export function Ticket(props: TicketProps) {
         <p><strong>{props.name}</strong></p>
         <p>{props.description}</p>
       </div>
-      <TicketButtons
-        id={props.id}
-        name={props.name}
-        description={props.description}
-        creationDate={props.creationDate}
-        status={props.status}
-        sector={props.sector}
-      />
+
+      {
+        userLogado == true ?
+          <TicketButtons
+            id={props.id}
+            name={props.name}
+            description={props.description}
+            creationDate={props.creationDate}
+            status={props.status}
+            sector={props.sector}
+          />
+          :
+          ''
+
+      }
+
     </div>
   )
 }

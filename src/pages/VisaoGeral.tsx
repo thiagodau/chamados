@@ -58,7 +58,15 @@ export function VisaoGeral() {
       }
       <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', fontSize: 'x-small', color: '#ccc' }}>
         <FaGithub color={'#ccc'} /> &nbsp; Desenvolvido por &nbsp; <a href="https://github.com/thiagodau/chamados" target="_blank" style={{ color: '#ccc' }}>Thiago Rodrigues</a>
-        &nbsp;|&nbsp; <Link to={'/login'} style={{ color: '#ccc' }}>Login</Link>
+        &nbsp;|&nbsp;
+
+        {
+          localStorage.getItem('@user')?.length as any > 1 ?
+            localStorage.getItem('@user') + ' esta logado.'
+            :
+            <Link to={'/login'} style={{ color: '#ccc' }}>Login</Link>
+        }
+
       </div>
     </div>
   )

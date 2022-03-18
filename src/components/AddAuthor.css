@@ -1,0 +1,30 @@
+.addAuthor {
+  width: 300px;
+  height: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.addAuthor input,
+.addAuthor button {
+  width: 100%;
+  margin: 2px;
+  padding: 8px;
+}
+
+.addAuthor button {
+  background-color: #ed9b09;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.addAuthor button:hover {
+  background-color: rgb(7, 187, 118);
+}
+
+.addAuthor img {
+  visibility: hidden;
+  width: 50px;
+}
