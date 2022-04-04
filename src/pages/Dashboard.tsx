@@ -21,12 +21,27 @@ export function Dashboard() {
 
   return (
     <div className='dashboard'>
-      <h2>Olá, {userLogado}.</h2>
-      <button onClick={() => { localStorage.removeItem('@user'), setUserLogado('') }}>Sair.</button>
       <div className='dashboard-menu'>
-        <Link to={'/'} >Visão Geral</Link> |
-        <button onClick={() => { setRenderPage('addAuthor') }}>Adicionar Técnico</button> |
-        <button onClick={() => { setRenderPage('reports') }}>Relatórios</button> |
+
+        <div style={{ marginBottom: '20px', width: '100%', display: 'flex', justifyContent: 'space-evenly' }}>
+          <h2>Olá, {userLogado}.</h2>
+          <button onClick={() => { localStorage.removeItem('@user'), setUserLogado('') }}>Sair.</button>
+        </div>
+        <div style={{ marginBottom: '20px', width: '100%', display: 'block' }}>
+          <div>
+            <ul>
+              <li>
+                <button><Link to={'/'} >Visão Geral</Link></button>
+              </li>
+              <li>
+                <button onClick={() => { setRenderPage('reports') }}>Relatórios</button>
+              </li>
+              <li>
+                <button onClick={() => { setRenderPage('addAuthor') }}>Adicionar Técnico</button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div className='dashboard-body'>
