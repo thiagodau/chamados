@@ -2,6 +2,7 @@ import { HeaderButtons } from './HeaderButtons'
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import logoPrefeitura from '../assets/logo-aquidauana.png'
 
 import './Header.css'
 
@@ -22,6 +23,8 @@ export function Header(props: HeaderProps) {
 
   return (
     <div className='header'>
+      <img src={logoPrefeitura} alt="Prefeitura de Aquidauana" width={'120px'} />
+
       <h1>Sistema de Gestão de Chamados</h1>
       <div className='header-content'>
         <HeaderButtons text='Total de Chamados' amount={props.amountTotal} />

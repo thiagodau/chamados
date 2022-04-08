@@ -1,8 +1,7 @@
 import { set, ref } from 'firebase/database';
 import { database } from '../services/firebase'
 
-import { FaBan, FaDoorClosed, FaDoorOpen } from 'react-icons/fa';
-
+import { FaBan, FaDoorClosed, FaDoorOpen, FaWpforms } from 'react-icons/fa';
 
 import './TicketButtons.css'
 
@@ -67,6 +66,7 @@ export function TicketButtons(props: TicketButtonsProps) {
   return (
     <div className="ticketsbuttons">
       <button onClick={() => { deletedTicket(props.id) }}><FaBan color={'#EA4147'} /></button>
+      <button onClick={() => { alert('oie') }}><FaWpforms color={'#FFF'} /></button>
       {
         props.status ?
           <button onClick={() => { closedTicket(props.id, props.name, props.description, props.creationDate, props.status, props.sector) }}><FaDoorOpen color={'#ED9B09'} /></button>
