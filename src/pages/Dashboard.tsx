@@ -26,7 +26,7 @@ export function Dashboard() {
 
         <div style={{ marginBottom: '20px', width: '100%', display: 'flex', justifyContent: 'space-evenly' }}>
           <h2>Olá, {userLogado}.</h2>
-          <button onClick={() => { localStorage.removeItem('@user'), setUserLogado('') }}>Sair.</button>
+          <button onClick={() => { localStorage.removeItem('@user'), localStorage.removeItem('@idUser'), setUserLogado('') }}>Sair.</button>
         </div>
         <div style={{ marginBottom: '20px', width: '100%', display: 'block' }}>
           <div>

@@ -17,22 +17,21 @@ export function Login() {
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
   const [shouldRedirect, setShouldRedirect] = useState(false);
-
   let navigate = useNavigate();
 
   useEffect(() => {
-    const dbRef = ref(database, 'authors');
+    const dbRef = ref(database, 'users');
     const Query = query(dbRef);
     onValue(Query, (snapshot) => {
       let allContent = [];
-      let listOfAuthors = [] as any;
+      let listOfUsers = [] as any;
       snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
         allContent = childSnapshot.val();
         allContent.key = childKey;
-        listOfAuthors.push(allContent)
+        listOfUsers.push(allContent)
       })
-      setUserData(listOfAuthors)
+      setUserData(listOfUsers)
     })
 
     if (shouldRedirect) {
@@ -43,9 +42,11 @@ export function Login() {
 
   function login(usuario: string, password: string) {
     let result = false;
+    let idUser = null;
 
     for (let i = 0; i < userData.length; i++) {
-      if (usuario == userData[i].name && password == userData[i].password) {
+      if (usuario === userData[i].user.user && password === userData[i].user.password) {
+        idUser = userData[i].key;
         result = true;
       }
     }
@@ -54,6 +55,7 @@ export function Login() {
       document.getElementById('message')!.style.visibility = "hidden"
       document.getElementById('imageLoading')!.style.visibility = 'visible';
       localStorage.setItem('@user', usuario);
+      localStorage.setItem('@idUser', idUser);
       setShouldRedirect(true)
     } else {
       document.getElementById('message')!.style.visibility = "visible"
