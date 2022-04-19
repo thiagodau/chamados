@@ -5,7 +5,6 @@ import { ref, query, onValue } from "firebase/database";
 
 import { Link, useNavigate } from "react-router-dom";
 
-
 import { FaUserCircle } from 'react-icons/fa'
 import imageLoading from '../assets/loop.gif';
 

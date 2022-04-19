@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { ref, push } from "firebase/database";
 import { database } from '../services/firebase'
@@ -40,6 +40,8 @@ export function OpenTicket() {
     }
   }, [name, description, sector]);
 
+  let navigate = useNavigate();
+
   /** Open Ticket */
   function openedTicket(name: string, description: string, sector: string) {
     if (sector == 'Selecione a Secretaria' || sector == '') {
@@ -70,7 +72,7 @@ export function OpenTicket() {
       /** send data to databse */
       push(ref(database, 'tickets'), { name, description, sector, creationDate, status }).then(
         () => {
-          window.location.replace('/')
+          navigate('/')
         }
       ).catch(error => {
         alert('Aconteceu algo de errado, consulte o console do navegador.')

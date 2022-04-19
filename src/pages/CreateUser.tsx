@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { push, ref, query, onValue } from 'firebase/database';
 import { database } from '../services/firebase';
 
@@ -23,6 +23,8 @@ export function CreateUser() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [sector, setSector] = useState('');
+
+  let navigate = useNavigate();
 
   function validationInputs(usuario: string, password: string, confirmPassword: string, sector: string) {
     let objectUser = {
@@ -73,7 +75,7 @@ export function CreateUser() {
     push(ref(database, 'users'), { user }).then(
       () => {
         alert('PARABÉNS, Seu usuário foi criado, você será redirecionado para tela de login.')
-        window.location.replace('/login')
+        navigate('/login')
       }
     ).catch(error => {
       alert('Aconteceu algo de errado, consulte o console do navegador.')

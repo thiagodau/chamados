@@ -1,6 +1,7 @@
-import { child, onValue, query, ref, set } from "firebase/database";
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { database } from "../services/firebase";
+import { onValue, query, ref, set } from "firebase/database";
 
 import './ChangePassword.css'
 
@@ -16,6 +17,8 @@ export function ChangePassword() {
 
   let user = {} as any;
 
+  let navigate = useNavigate();
+
   function changePassword(passwordOld: string, newPassword: string, confirmationPassword: string) {
     if (verifyPasswordOld(passwordOld)) {
       if (newPassword === confirmationPassword) {
@@ -25,7 +28,7 @@ export function ChangePassword() {
             alert('Sua senha foi alterada, você será deslogado. Para entrar novamente utilize sua nova senha.')
             localStorage.removeItem('@user')
             localStorage.removeItem('@idUser')
-            window.location.replace('/login')
+            navigate('/login')
           }
         ).catch((error) => {
           console.log(error)
