@@ -44,6 +44,7 @@ export function AddAuthor() {
   }
   return (
     <div className="addAuthor">
+      <h1>Adicionar Author</h1>
       <input placeholder="Informe o nome de usuário" type="text" name="author" id="author" onChange={(e) => { setNameAuthor(e.target.value) }} value={nameAuthor} />
       <input placeholder="Informe uma senha" type="password" name="password" id="password" onChange={(e) => { setPassword(e.target.value) }} value={password} />
       <input placeholder="Confirme a senha" type="password" name="confirmPassword" id="confirmPassword" onChange={(e) => { setConfirmPassword(e.target.value) }} value={confirmPassword} />

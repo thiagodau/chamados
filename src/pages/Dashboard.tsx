@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { AddAuthor } from '../components/AddAuthor'
 import { Reports } from '../components/Reports'
+import { Profile } from '../pages/Profile'
 
 import './Dashboard.css'
 
@@ -39,6 +40,9 @@ export function Dashboard() {
               <li>
                 <button onClick={() => { setRenderPage('addAuthor') }}>Adicionar Técnico</button>
               </li>
+              <li>
+                <button onClick={() => { setRenderPage('profile') }}>Perfil</button>
+              </li>
             </ul>
           </div>
         </div>
@@ -54,6 +58,12 @@ export function Dashboard() {
         {
           renderPage == 'reports' ?
             <Reports />
+            :
+            ''
+        }
+        {
+          renderPage == 'profile' ?
+            <Profile />
             :
             ''
         }
