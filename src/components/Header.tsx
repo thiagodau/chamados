@@ -1,7 +1,9 @@
+
+import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+
 import { HeaderButtons } from './HeaderButtons'
 
-import { Link } from "react-router-dom";
-import { useEffect, useState } from 'react';
 import logoPrefeitura from '../assets/logo-aquidauana.png'
 
 import './Header.css'
@@ -26,6 +28,18 @@ export function Header(props: HeaderProps) {
       <img src={logoPrefeitura} alt="Prefeitura de Aquidauana" width={'120px'} />
 
       <h1>Sistema de Gestão de Chamados</h1>
+      {
+        localStorage.getItem('@user')?.length as any > 1 ?
+          <Link to={'/dashboard'} style={{ color: '#ccc' }}>Oi {localStorage.getItem('@user')}, acesse o Dashboard aqui.
+          </Link>
+
+          :
+          <div>
+            <Link to={'/login'} style={{ color: '#ccc' }}>Login</Link>
+            &nbsp;
+            <Link to={'/createUser'} style={{ color: '#ccc' }}>Criar Usuário</Link>
+          </div>
+      }
       <div className='header-content'>
         <HeaderButtons text='Total de Chamados' amount={props.amountTotal} />
         <HeaderButtons text='Chamados em Aberto' amount={props.amountOpen} />
