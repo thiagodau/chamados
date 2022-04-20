@@ -15,19 +15,12 @@ export function ListData(props: ListData) {
           return (
             <div className="group-list" key={i}>
               <ul>
-                <li>{item.name}</li>
+                <li>{item.userCreator.toUpperCase()}</li>
                 <li>{item.description}</li>
                 <li>{dateFormatted}</li>
                 <li>{item.status ? 'ABERTO' : 'CONCLUIDO'}</li>
                 <li>
-                  <TicketButtons
-                    id={item.key}
-                    name={item.name}
-                    description={item.description}
-                    creationDate={item.creationDate}
-                    status={item.status}
-                    sector={item.sector}
-                  />
+                  <TicketButtons id={item.key} status={item.status} />
                 </li>
               </ul>
             </div>

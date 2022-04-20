@@ -5,7 +5,7 @@ import './Ticket.css'
 
 type TicketProps = {
   id: string,
-  name: string,
+  userCreator: string,
   description: string,
   creationDate: string,
   status: boolean,
@@ -33,7 +33,7 @@ export function Ticket(props: TicketProps) {
         {props.status ? <span style={{ color: 'orange' }}>ABERTO</span> : <span style={{ color: 'green' }}>CONCLUÍDO</span>}
         <p>{dateFormatted}</p>
         <p>{props.sector}</p>
-        <p><strong>{props.name}</strong></p>
+        <p><strong>{props.userCreator.toUpperCase()}</strong></p>
         <p>{props.description}</p>
       </div>
 
@@ -41,7 +41,7 @@ export function Ticket(props: TicketProps) {
         userLogado == true ?
           <TicketButtons
             id={props.id}
-            name={props.name}
+            name={props.userCreator}
             description={props.description}
             creationDate={props.creationDate}
             status={props.status}

@@ -13,7 +13,7 @@ export function Body(props: BodyProps) {
             <div key={key}>
               <Ticket
                 id={item.key}
-                name={item.name}
+                userCreator={item.userCreator}
                 description={item.description}
                 creationDate={item.creationDate}
                 status={item.status}

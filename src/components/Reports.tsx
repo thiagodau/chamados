@@ -9,11 +9,12 @@ import './Reports.css'
 export function Reports() {
 
   const [data, setData] = useState([])
-
   const dbRef = ref(database, 'tickets');
   const Query = query(dbRef);
 
-  function getAllData() {
+  function getTicketsByUser() {
+    let _id = localStorage.getItem('@idUser');
+
     onValue(Query, (snapshot) => {
       let allContent = [];
       let listOfTickets = [] as any;
@@ -22,32 +23,37 @@ export function Reports() {
         const childKey = childSnapshot.key;
         allContent = childSnapshot.val();
         allContent.key = childKey;
-
-        listOfTickets.push(allContent)
+        if (_id === allContent.idUserCreator) {
+          listOfTickets.push(allContent)
+        }
       })
       setData(listOfTickets)
     })
+
   }
 
   return (
     <div className="reports">
       <div className='reports-header'>
-        <h1>Reports</h1>
-        <button onClick={() => { getAllData() }}>Buscar todos</button>
+        <h1>Chamados</h1>
+        <button onClick={() => { getTicketsByUser() }}>Meus Chamados</button>
       </div>
       <div className='reports-list'>
-        <div className='group-list'>
-          <ul style={{ fontSize: 'large', fontWeight: 'bolder' }}>
-            <li>Nome</li>
-            <li>Descrição</li>
-            <li>Data Criação</li>
-            <li>Status</li>
-            <li>Ações</li>
-          </ul>
-        </div>
-
-        <ListData allData={data} />
-
+        {
+          data.length > 0 ?
+            <div className='group-list'>
+              <ul style={{ fontSize: 'large', fontWeight: 'bolder' }}>
+                <li>Nome</li>
+                <li>Descrição</li>
+                <li>Data Criação</li>
+                <li>Status</li>
+                <li>Ações</li>
+              </ul>
+              <ListData allData={data} />
+            </div>
+            :
+            'Selecione uma opção.'
+        }
       </div >
     </div >
   )

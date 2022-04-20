@@ -42,7 +42,6 @@ export function Login() {
   function login(usuario: string, password: string) {
     let result = false;
     let idUser = null;
-
     for (let i = 0; i < userData.length; i++) {
       if (usuario === userData[i].user.user && password === userData[i].user.password) {
         idUser = userData[i].key;
@@ -58,10 +57,17 @@ export function Login() {
       setShouldRedirect(true)
     } else {
       document.getElementById('message')!.style.visibility = "visible"
-      document.getElementById('form')!.style.animation = "treme 0.1s"
-      document.getElementById('form')!.style.animationIterationCount = "2"
-      document.getElementById('form')!.style.animationDuration = "200ms"
+      animation()
     }
+  }
+
+  const animation = () => {
+    document.getElementById('form')!.style.animation = "treme 0.1s"
+    document.getElementById('form')!.style.animationIterationCount = "2"
+    document.getElementById('form')!.style.animationDuration = "200ms"
+    setTimeout(function () {
+      document.getElementById('form')!.style.animation = "none"
+    }, 500)
   }
 
   return (

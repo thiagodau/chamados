@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { AddAuthor } from '../components/AddAuthor'
 import { Reports } from '../components/Reports'
 import { Profile } from '../pages/Profile'
 
@@ -38,9 +37,6 @@ export function Dashboard() {
                 <button onClick={() => { setRenderPage('reports') }}>Relatórios</button>
               </li>
               <li>
-                <button onClick={() => { setRenderPage('addAuthor') }}>Adicionar Técnico</button>
-              </li>
-              <li>
                 <button onClick={() => { setRenderPage('profile') }}>Perfil</button>
               </li>
             </ul>
@@ -49,12 +45,6 @@ export function Dashboard() {
       </div>
 
       <div className='dashboard-body'>
-        {
-          renderPage == 'addAuthor' ?
-            <AddAuthor />
-            :
-            ''
-        }
         {
           renderPage == 'reports' ?
             <Reports />

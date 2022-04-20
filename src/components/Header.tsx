@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
@@ -23,6 +22,12 @@ export function Header(props: HeaderProps) {
     props.querySelected(state)
   }, [state])
 
+  const userLogged = () => {
+    let logged = localStorage.getItem('@user')?.length as any
+    logged > 0 ? logged = true : logged = false
+    return logged;
+  }
+
   return (
     <div className='header'>
       <img src={logoPrefeitura} alt="Prefeitura de Aquidauana" width={'120px'} />
@@ -32,27 +37,41 @@ export function Header(props: HeaderProps) {
         localStorage.getItem('@user')?.length as any > 1 ?
           <Link to={'/dashboard'} style={{ color: '#ccc' }}>Oi {localStorage.getItem('@user')}, acesse o Dashboard aqui.
           </Link>
-
           :
-          <div>
-            <Link to={'/login'} style={{ color: '#ccc' }}>Login</Link>
-            &nbsp;
-            <Link to={'/createUser'} style={{ color: '#ccc' }}>Criar Usuário</Link>
-          </div>
+          'Para criar um chamado, faça o login ou crie uma conta.'
       }
       <div className='header-content'>
         <HeaderButtons text='Total de Chamados' amount={props.amountTotal} />
         <HeaderButtons text='Chamados em Aberto' amount={props.amountOpen} />
-        <div style={{
-          width: '250px',
-          maxWidth: '500px',
-          backgroundColor: '#ED9B09',
-          margin: '10px',
-          padding: '20px 20px',
-          textAlign: 'center',
-        }}>
-          <Link style={{ color: '#fff', textDecoration: 'none' }} to={'/abrirchamado'}>Abrir Chamado</Link>
-        </div>
+        {
+          userLogged() === true ?
+            <div style={{
+              width: '250px',
+              maxWidth: '500px',
+              backgroundColor: '#ED9B09',
+              margin: '10px',
+              padding: '20px 20px',
+              textAlign: 'center',
+            }}>
+              <Link style={{ color: '#fff', textDecoration: 'none' }} to={'/abrirchamado'}>Abrir Chamado</Link>
+            </div>
+            :
+            <div style={{
+              width: '250px',
+              maxWidth: '500px',
+              backgroundColor: '#ED9B09',
+              margin: '10px',
+              padding: '20px 20px',
+              textAlign: 'center',
+            }}>
+              <div>
+                <Link to={'/login'} style={{ color: '#fff' }}>Login</Link>
+                &nbsp;ou&nbsp;
+                <Link to={'/createUser'} style={{ color: '#fff' }}>Criar conta</Link>
+              </div>
+            </div>
+        }
+
       </div>
 
       <div className='header-content'>
