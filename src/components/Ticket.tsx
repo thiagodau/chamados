@@ -36,22 +36,15 @@ export function Ticket(props: TicketProps) {
         <p><strong>{props.userCreator.toUpperCase()}</strong></p>
         <p>{props.description}</p>
       </div>
-
       {
         userLogado == true ?
           <TicketButtons
             id={props.id}
-            name={props.userCreator}
-            description={props.description}
-            creationDate={props.creationDate}
             status={props.status}
-            sector={props.sector}
           />
           :
           ''
-
       }
-
     </div>
   )
 }

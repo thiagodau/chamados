@@ -51,7 +51,7 @@ export function Header(props: HeaderProps) {
               backgroundColor: '#ED9B09',
               margin: '10px',
               padding: '20px 20px',
-              textAlign: 'center',
+              textAlign: 'center'
             }}>
               <Link style={{ color: '#fff', textDecoration: 'none' }} to={'/abrirchamado'}>Abrir Chamado</Link>
             </div>
